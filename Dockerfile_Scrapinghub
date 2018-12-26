@@ -1,35 +1,40 @@
-FROM scrapinghub/scrapinghub-stack-scrapy:1.3
+FROM scrapinghub/scrapinghub-stack-scrapy:1.5-py3-latest
 ENV TERM xterm
 ENV SCRAPY_SETTINGS_MODULE tutorial.settings
+RUN mkdir -p /app
+WORKDIR /app
 
+RUN apt install python3-dev -y
 
-# Python 3.7
-RUN apt update && apt upgrade
-
-RUN apt install build-essential
-
-RUN apt install libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev
-
-RUN apt install libssl-dev libncurses5-dev libsqlite3-dev libreadline-dev libtk8.5 libgdm-dev libdb4o-cil-dev libpcap-dev
-
-
-RUN apt install zlib1g
-
+# Chrome browser and driver installation
 WORKDIR /tmp
 
-RUN wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz
+RUN apt-get install libxss1 libappindicator1 libindicator7 -y
 
-RUN tar -xzvf Python-3.7.0.tgz
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-RUN ./configure --enable-optimizations
+RUN dpkg -i google-chrome*.deb; exit 0
 
-RUN make
+RUN apt-get install -f -y
 
-RUN make install
+RUN apt-get install xvfb -y
+
+RUN apt-get install unzip -y
+
+RUN wget -N https://chromedriver.storage.googleapis.com/2.45/chromedriver_linux64.zip
+
+RUN unzip chromedriver_linux64.zip
+
+RUN chmod +x chromedriver
+
+RUN mv -f chromedriver /usr/local/share/chromedriver
+
+RUN ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+
+RUN ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 
 
 
-RUN mkdir -p /app
 WORKDIR /app
 COPY ./requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
