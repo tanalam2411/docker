@@ -37,13 +37,9 @@ RUN curl -o /usr/local/bin/gosu -fSL https://github.com/tianon/gosu/releases/dow
 ENV MINCOIN_CORE_VERSION=0.13.0
 ENV MINCOIN_DATA=/home/mincoin/.mincoin
 
-#RUN wget https://github.com/mincoin/mincoin/releases/download/v${MINCOIN_CORE_VERSION}/mincoin-${MINCOIN_CORE_VERSION}-aarch64-linux-gnu.tar.gz
 RUN wget https://github.com/mincoin/mincoin/releases/download/v${MINCOIN_CORE_VERSION}/mincoin-${MINCOIN_CORE_VERSION}-x86_64-linux-gnu.tar.gz
 
-#RUN tar --strip=2 -xzf *.tar.gz -C /usr/local/bin
-RUN tar --strip=2 -xzf *.tar.gz
-RUN echo ls -lrt
-RUN cp -r mincoin-0.13.0/bin/* /usr/local/bin
+RUN tar --strip=2 -xzf *.tar.gz -C /usr/local/bin
 
 RUN rm *.tar.gz
 
