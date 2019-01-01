@@ -1,0 +1,10 @@
+version: '2'
+
+
+services:
+  mongodb:
+    image: 'bitnami/mongodb:latest'
+    ports:
+      - "27017:27017"
+    volumes:
+      - /home/tan/tanveer/docker/mongo/mongo_db_persistance:/bitnami
