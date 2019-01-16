@@ -1,0 +1,2 @@
+docker run --rm -d --name mondo-dev mongo
+docker run --rm -d --name rabbit-dev rabbitmq
