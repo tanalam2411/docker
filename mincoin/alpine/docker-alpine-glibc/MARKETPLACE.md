@@ -55,3 +55,14 @@ mnc@mnc-ubuntu:~$ id -nG
 mnc sudo docker
 
 ```
+
+> 5. Running mincoin container
+```sh
+mnc@mnc-ubuntu:~$ docker pull mincoin/mincoin
+mnc@mnc-ubuntu:~$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mincoin/mincoin     latest              f04ddb1218ea        3 months ago        71.5MB
+mnc@mnc-ubuntu:~$ docker run -d f04ddb1218ea
+mnc@mnc-ubuntu:~$ docker exec 2e3f67207eb9 mincoin-cli
+Mincoin Core RPC client version v0.13.0
+```
