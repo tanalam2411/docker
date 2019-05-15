@@ -1,7 +1,7 @@
 
 > 1. Create Ubuntu 18.04 drop on digitalocean.
 
-> 2. 
+> 2. [Initial Server Setup with Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
 ```sh
 root@mnc-ubuntu:~# adduser mnc
 # password - mnc1234
@@ -29,3 +29,8 @@ root@mnc-ubuntu:~# rsync --archive --chown=mnc:mnc ~/.ssh /home/mnc
 ```
 
 Now you can login using `mnc` user also using ssh.
+
+> 3. Installing docker
+
+mnc@mnc-ubuntu:~$ sudo apt update -y
+
