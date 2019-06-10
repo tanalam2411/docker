@@ -66,3 +66,8 @@ mnc@mnc-ubuntu:~$ docker run -d f04ddb1218ea
 mnc@mnc-ubuntu:~$ docker exec 2e3f67207eb9 mincoin-cli
 Mincoin Core RPC client version v0.13.0
 ```
+
+> 6. Running container of droplet reboot
+```sh
+mnc@mnc-ubuntu:~$ sudo mkdir /opt/mincoin
+```
